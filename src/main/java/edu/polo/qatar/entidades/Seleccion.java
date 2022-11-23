@@ -18,6 +18,8 @@ public class Seleccion {
     private Long id;
 
     private String nombre;
+    private Integer mundialesGanados;
+    private Integer participacionesPrevias;
 
     @OneToMany(mappedBy = "seleccion")
     @JsonManagedReference
