@@ -3,38 +3,35 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                    Editar jugador
+                    Editar estadio
                 </div>
-                <form class="card-body" th:action="@{'/jugadores/editar/{id}' (id=${jugador.id})}" th:object="${jugador}" th:method="PUT" enctype="multipart/form-data">
+                <form class="card-body" th:action="@{'/estadios/editar/{id}' (id=${estadio.id})}" th:object="${estadio}" th:method="PUT" enctype="multipart/form-data">
                     <div class="mb-3">
                         <label for="nombre" class="form-label">Nombre</label>
                         <input type="text" class="form-control" id="nombre" th:field="*{nombre}" th:errorClass="'is-invalid'">
                         <div class="invalid-feedback" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
                     </div>
                     <div class="mb-3">
-                        <label for="fechaNacimiento" class="form-label">Fecha de nacimiento</label>
-                        <input type="date" class="form-control" id="fechaNacimiento" th:field="*{fechaNacimiento}">
-                        <div class="invalid-feedback" th:if="${#fields.hasErrors('fechaNacimiento')}" th:errors="*{fechaNacimiento}"></div>
+                        <label for="ciudad" class="form-label">Ciudad</label>
+                        <input type="text" class="form-control" id="ciudad" th:field="*{ciudad}" th:errorClass="'is-invalid'">
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('ciudad')}" th:errors="*{ciudad}"></div>
                     </div>
                     <div class="mb-3">
-                        <label for="seleccion" class="form-label">Selección</label>
-                        <select id="seleccion" th:field="*{seleccion}" class="select2 form-select" th:errorClass="'is-invalid'">
-                            <option value=""></option>
-                            <option th:each="s : ${selecciones}" th:value="${s.id}" th:text="${s.nombre}"></option>
-                        </select>
-                        <div class="invalid-feedback" th:if="${#fields.hasErrors('seleccion')}" th:errors="*{seleccion}"></div>
+                        <label for="capacidad" class="form-label">Capacidad</label>
+                        <input type="number" class="form-control" id="capacidad" th:field="*{capacidad}" th:errorClass="'is-invalid'">
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('capacidad')}" th:errors="*{capacidad}"></div>
                     </div>
-                    <div class="mb-3" th:if="${jugador.foto != null}">
-                        <label>Foto actual del jugador</label>
-                        <img th:src="${'/images/jugadores/' + jugador.foto}" th:alt="${'Foto de ' + jugador.nombre}" height="100px">
+                    <div class="mb-3" th:if="${estadio.foto != null}">
+                        <label>Foto actual del estadio</label>
+                        <img th:src="${'/images/estadios/' + estadio.foto}" th:alt="${'Foto del estadio ' + estadio.nombre}" height="100px">
                     </div>
                     <div class="mb-3">
-                        <label for="archivo" class="form-label">Foto del jugador</label>
+                        <label for="archivo" class="form-label">Foto del estadio</label>
                         <input class="form-control" type="file" id="archivo" name="archivo" accept="image/*">
                     </div>
                     <div class="d-flex justify-content-center">
                         <button type="submit" class="btn btn-primary mx-2">Editar</button>
-                        <a href="/jugadores" class="btn btn-secondary mx-2">Volver</a>
+                        <a href="/estadios" class="btn btn-secondary mx-2">Volver</a>
                     </div>
                 </form>
             </div>
