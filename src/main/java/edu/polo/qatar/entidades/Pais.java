@@ -16,12 +16,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Builder
-@Table(name="pais")
+@Table(name="paises")
 public class Pais {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public long paisId;
-    public String pais;
+    public String paisNombre;
     public String pcc;
 }
