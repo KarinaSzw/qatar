@@ -14,6 +14,8 @@ import javax.validation.constraints.Size;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Component
 @MappedSuperclass
 public abstract class Persona {
@@ -29,12 +31,14 @@ public abstract class Persona {
     protected Date      fechaNacimiento;
     
     @OneToOne
+    @JsonBackReference
+    @NotNull(message = "Debe elegir un valor")
     protected Pais      lugarDeNacimiento;
 
-    public Persona() {
+    protected Persona() {
     }
     
-    public Persona(String nombre, Date fechaNacimiento, Pais lugarDeNacimiento) {
+    protected Persona(String nombre, Date fechaNacimiento, Pais lugarDeNacimiento) {
         this.nombre = nombre;
         this.fechaNacimiento = fechaNacimiento;
         this.lugarDeNacimiento = lugarDeNacimiento;
