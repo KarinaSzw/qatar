@@ -3,9 +3,9 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                    <h2>Editar pais</h2>
+                    <h2>Editar país</h2>
                 </div>
-                <form class="card-body" th:action="@{'/paises/editar/{id}' (id=${pais.paisId})}" th:object="${pais}" th:method="PUT" enctype="multipart/form-data">
+                <form class="card-body" th:action="@{'/paises/editar/{id}' (id=${pais.paisId})}" th:object="${pais}" th:method="PUT">
                     <div class="mb-3 row pt-2 pb-5">
                         <div class="col-2">
                             <label for="paisId" class="form-label">ID</label>

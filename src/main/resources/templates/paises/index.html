@@ -12,35 +12,36 @@
         </div>
 
         <div class="row mb-5">
-            <div class="col h2"><h2>Listado de paises</h2></div>
+            <div class="col h2"><h2>Listado de países</h2></div>
             <a href="/paises/crear" class="col-auto btn btn-lg btn-success">
                 <i class="fa-solid fa-plus"></i>
             </a>
         </div>
                 
-        <table id="paises" class="display" style="width:100%"> <!-- Lsita de Paises -->
+        <table id="paises" class="display" style="width:100%"> <!-- Lista de Paises -->
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Pais</th>
-                    <th>Codigo de Pais</th>
+                    <th>País</th>
+                    <th>Codigo de país</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="j : ${paises}">
-                    <td th:text="${j.paisId}"></td>
-                    <td th:text="${j.paisNombre}"></td>
-                    <td th:text="${j.pcc}"></td>
+                <tr th:each="p : ${paises}">
+                    <td th:text="${p.paisId}"></td>
+                    <td th:text="${p.paisNombre}"></td>
+                    <td th:text="${p.pcc}"></td>
                     <td>
-                        <a class="btn btn-primary" th:href="@{'/paises/{id}' (id=${j.paisId})}">
+                        <a class="btn btn-primary" th:href="@{'/paises/{id}' (id=${p.paisId})}">
                             <i class="fa-solid fa-eye" title="Ver"></i>
                         </a>
 
-                        <a class="btn btn-secondary" th:href="@{'/paises/editar/{id}' (id=${j.paisId})}">
+                        <a class="btn btn-secondary" th:href="@{'/paises/editar/{id}' (id=${p.paisId})}">
                             <i class="fa-solid fa-pencil" title="Editar"></i>
                         </a>
 
-                        <form class="d-inline" th:action="@{'/paises/{id}' (id=${j.paisId})}" th:method="DELETE">
+                        <form class="d-inline" th:action="@{'/paises/{id}' (id=${p.paisId})}" th:method="DELETE">
                             <button type="submit" class="btn btn-danger" onclick="javascript: confirm('¿Está seguro de eliminar?')">
                                 <i class="fa-solid fa-trash-can" title="Eliminar"></i>
                             </button>

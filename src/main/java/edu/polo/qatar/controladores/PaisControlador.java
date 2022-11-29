@@ -23,7 +23,7 @@ public class PaisControlador implements WebMvcConfigurer {
     {
         ModelAndView maw = new ModelAndView();
         maw.setViewName("fragments/base");
-        maw.addObject("titulo", "Listado de paises");
+        maw.addObject("titulo", "Listado de países");
         maw.addObject("vista", "paises/index");
         maw.addObject("paises", paisServicio.getAll());
         return maw;
@@ -34,7 +34,7 @@ public class PaisControlador implements WebMvcConfigurer {
     {
         ModelAndView maw = new ModelAndView();
         maw.setViewName("fragments/base");
-        maw.addObject("titulo", "Detalle del pais #" + id);
+        maw.addObject("titulo", "Detalle del país #" + id);
         maw.addObject("vista", "paises/ver");
         maw.addObject("pais", paisServicio.getById(id));
         return maw;
@@ -45,7 +45,7 @@ public class PaisControlador implements WebMvcConfigurer {
     {
         ModelAndView maw = new ModelAndView();
         maw.setViewName("fragments/base");
-        maw.addObject("titulo", "Crear pais");
+        maw.addObject("titulo", "Crear país");
         maw.addObject("vista", "paises/crear");
         maw.addObject("pais", pais);
         return maw;
