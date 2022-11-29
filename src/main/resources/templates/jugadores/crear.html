@@ -12,9 +12,17 @@
                         <div class="invalid-feedback" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
                     </div>
                     <div class="mb-3">
-                        <label for="fechaNacimiento" class="form-label">Fecha de nacimiento</label>
+                        <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento</label>
                         <input type="date" class="form-control" id="fechaNacimiento" th:field="*{fechaNacimiento}" th:errorClass="'is-invalid'">
                         <div class="invalid-feedback" th:if="${#fields.hasErrors('fechaNacimiento')}" th:errors="*{fechaNacimiento}"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="lugarDeNacimiento" class="form-label">Lugar de Nacimiento</label>
+                        <select id="lugarDeNacimiento" th:field="*{lugarDeNacimiento}" class="select2 form-select" th:errorClass="'is-invalid'">
+                            <option selected value=""></option>
+                            <option th:each="p : ${paises}" th:value="${p.paisId}" th:text="${p.paisNombre}"></option>
+                        </select>
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('lugarDeNacimiento')}" th:errors="*{lugarDeNacimiento}"></div>
                     </div>
                     <div class="mb-3">
                         <label for="seleccion" class="form-label">Selección</label>

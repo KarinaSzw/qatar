@@ -23,6 +23,9 @@ public class JugadorControlador implements WebMvcConfigurer {
 
     @Autowired
     SeleccionServicio seleccionServicio;
+    
+    @Autowired
+    PaisServicio paisServicio;
 
 	@GetMapping
     private ModelAndView index()
@@ -53,6 +56,7 @@ public class JugadorControlador implements WebMvcConfigurer {
         maw.setViewName("fragments/base");
         maw.addObject("titulo", "Crear jugador");
         maw.addObject("vista", "jugadores/crear");
+        maw.addObject("paises", paisServicio.getAll());
         maw.addObject("selecciones", seleccionServicio.getAll());
         return maw;
 	}
@@ -100,6 +104,7 @@ public class JugadorControlador implements WebMvcConfigurer {
         maw.setViewName("fragments/base");
         maw.addObject("titulo", "Editar jugador");
         maw.addObject("vista", "jugadores/editar");
+        maw.addObject("paises", paisServicio.getAll());
         maw.addObject("selecciones", seleccionServicio.getAll());
 
         if (estaPersistido)
