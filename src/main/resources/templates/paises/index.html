@@ -12,7 +12,7 @@
         </div>
 
         <div class="row mb-5">
-            <div class="col h2"><h2>Listado de países</h2></div>
+            <div class="col h2">Listado de países</div>
             <a href="/paises/crear" class="col-auto btn btn-lg btn-success">
                 <i class="fa-solid fa-plus"></i>
             </a>
@@ -24,6 +24,7 @@
                     <th>ID</th>
                     <th>País</th>
                     <th>Codigo de país</th>
+                    <th>Bandera</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -32,6 +33,9 @@
                     <td th:text="${p.paisId}"></td>
                     <td th:text="${p.paisNombre}"></td>
                     <td th:text="${p.pcc}"></td>
+                    <td>
+                        <img class="border" th:src="|/images/banderas/${p.pcc}.webp|" th:alt="|Bandera de ${p.paisNombre}|" height="20px">
+                    </td>
                     <td>
                         <a class="btn btn-primary" th:href="@{'/paises/{id}' (id=${p.paisId})}">
                             <i class="fa-solid fa-eye" title="Ver"></i>
