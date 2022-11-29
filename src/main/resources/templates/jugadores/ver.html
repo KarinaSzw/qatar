@@ -9,6 +9,10 @@
                         <span th:text="${#dates.format(jugador.fechaNacimiento, 'd MMMMM yyyy')}"></span>
                     </p>
                     <p>
+                        <span class="fw-bold">Lugar de Nacimiento:</span>
+                        <span th:text="${jugador.lugarDeNacimiento.paisNombre}"></span>
+                    </p>
+                    <p>
                         <span class="fw-bold">Selección:</span>
                         <span th:text="${jugador.seleccion.nombre}"></span>
                     </p>

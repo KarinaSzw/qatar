@@ -23,6 +23,7 @@
                 <tr>
                     <th>Nombre</th>
                     <th>Fecha de nacimiento</th>
+                    <th>Lugar de nacimiento</th>
                     <th>Selección</th>
                     <th>Acciones</th>
                 </tr>
@@ -31,6 +32,7 @@
                 <tr th:each="j : ${jugadores}">
                     <td th:text="${j.nombre}"></td>
                     <td th:text="${#dates.format(j.fechaNacimiento, 'dd/MM/yyyy')}"></td>
+                    <td th:text="${j.lugarDeNacimiento.paisNombre}"></td>
                     <td th:text="${j.seleccion.nombre}"></td>
                     <td>
                         <a class="btn btn-primary" th:href="@{'/jugadores/{id}' (id=${j.id})}">
