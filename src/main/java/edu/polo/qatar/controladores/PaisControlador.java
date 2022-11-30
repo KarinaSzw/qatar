@@ -2,6 +2,7 @@ package edu.polo.qatar.controladores;
 
 import edu.polo.qatar.entidades.*;
 import edu.polo.qatar.servicios.*;
+
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.validation.BindingResult;
@@ -17,6 +18,9 @@ public class PaisControlador implements WebMvcConfigurer {
 
 	@Autowired
     PaisServicio paisServicio;
+
+    @Autowired
+    EmailServicio emailServicio;
 
 	@GetMapping
     public ModelAndView index()
