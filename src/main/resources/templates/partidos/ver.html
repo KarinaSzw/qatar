@@ -1,0 +1,41 @@
+<div class="container my-auto p-3" th:fragment="contenido">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header h3" th:text="|Ver ID nº ${partido.Id}|"></div>
+                <div class="card-body">
+                    <p>
+                        <span class="fw-bold">Fecha de Partido:</span>
+                        <span th:text="${#dates.format(partido.fechaPartido, 'd MMMMM yyyy')}"></span>
+                    </p>
+                    <p>
+                        <span class="fw-bold">Seleccon local:</span>
+                        <span th:text="${partido.seleccionLocal.nombre}"></span>
+                    </p>
+                    <p>
+                        <span class="fw-bold">Selección visitante:</span>
+                        <span th:text="${partido.seleccionVisitante.nombre}"></span>
+                    </p>
+                    <p>
+                        <span class="fw-bold">Goles local:</span>
+                        <span th:text="${partido.golesLocal}"></span>
+                    </p>
+                    <p>
+                        <span class="fw-bold">Goles visitante:</span>
+                        <span th:text="${partido.golesVisitante}"></span>
+                    </p>
+                    <p>
+                        <span class="fw-bold">Estadio</span>
+                        <span th:text="${partido.estadio.nombre}"></span>
+                    </p>
+                    
+                    <div class="d-flex justify-content-center">
+                        <a href="/partidos" class="btn btn-secondary mx-2">Volver</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script th:fragment="script"></script>

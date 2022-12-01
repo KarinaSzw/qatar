@@ -20,6 +20,11 @@ public class PartidoControlador implements WebMvcConfigurer {
 
 	@Autowired
     PartidoServicio partidoServicio;
+    @Autowired
+    SeleccionServicio seleccionServicio;
+    
+    @Autowired
+    EstadioServicio estadioServicio;
 
 	@GetMapping
     private ModelAndView index()
@@ -49,7 +54,9 @@ public class PartidoControlador implements WebMvcConfigurer {
         ModelAndView maw = new ModelAndView();
         maw.setViewName("fragments/base");
         maw.addObject("titulo", "Crear partido");
-        maw.addObject("vista", "partidos/crear");
+        maw.addObject("vista", "partidos/crear");        
+        maw.addObject("selecciones", seleccionServicio.getAll());
+        maw.addObject("estadios", estadioServicio.getAll());
         maw.addObject("partido", partido);
         return maw;
 	}
@@ -75,7 +82,9 @@ public class PartidoControlador implements WebMvcConfigurer {
         ModelAndView maw = new ModelAndView();
         maw.setViewName("fragments/base");
         maw.addObject("titulo", "Editar partido");
-        maw.addObject("vista", "partidos/editar");
+        maw.addObject("vista", "partidos/editar");       
+        maw.addObject("selecciones", seleccionServicio.getAll());
+        maw.addObject("estadios", estadioServicio.getAll());
         maw.addObject("partido", partidoServicio.getById(id));
         return maw;
     }
@@ -88,7 +97,9 @@ public class PartidoControlador implements WebMvcConfigurer {
             ModelAndView maw = new ModelAndView();
             maw.setViewName("fragments/base");
             maw.addObject("titulo", "Editar partido");
-            maw.addObject("vista", "partidos/editar");
+            maw.addObject("vista", "partidos/editar");            
+            maw.addObject("selecciones", seleccionServicio.getAll());
+            maw.addObject("estadios", estadioServicio.getAll());
             maw.addObject("partido", partido);
 			return maw;
 		}
