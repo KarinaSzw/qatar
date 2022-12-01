@@ -1,8 +1,11 @@
 package edu.polo.qatar.entidades;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.util.*;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
 import lombok.*;
 
 @Entity
@@ -22,6 +25,9 @@ public class Seleccion {
     @OneToMany(mappedBy = "seleccion")
     @JsonManagedReference
     private List<Jugador> jugadores;
+
+ 
+
 
     @Override
     public String toString() {

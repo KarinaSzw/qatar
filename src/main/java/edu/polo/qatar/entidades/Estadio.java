@@ -31,5 +31,6 @@ public class Estadio {
     private String ciudad;
 
     private String foto;
-
+    @OneToOne
+    public Partido partido;
 }
