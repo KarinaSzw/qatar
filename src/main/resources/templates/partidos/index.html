@@ -29,20 +29,21 @@
             </thead>
             <tbody>
                 <tr th:each="p: ${partidos}">
-                    <td th:text="${p.fechaNacimiento}"></td>
+                    <td th:text= "${#dates.format(p.fechaPartido, 'dd/MM/yyyy')}" ></td>
+                   
                     <td th:text="${p.seleccionLocal.nombre}"></td>
                     <td th:text="${p.seleccionVisitante.nombre"></td>
                  
                     <td>
-                        <a class="btn btn-primary" th:href="@{'/partidos/{id}' (id=${p.Id})}">
+                        <a class="btn btn-primary" th:href="@{'/partidos/{id}' (id=${p.id})}">
                             <i class="fa-solid fa-eye" title="Ver"></i>
                         </a>
 
-                        <a class="btn btn-secondary" th:href="@{'/partidos/editar/{id}' (id=${p.Id})}">
+                        <a class="btn btn-secondary" th:href="@{'/partidos/editar/{id}' (id=${p.id})}">
                             <i class="fa-solid fa-pencil" title="Editar"></i>
                         </a>
 
-                        <form class="d-inline" th:action="@{'/partidos/{id}' (id=${p.Id})}" th:method="DELETE">
+                        <form class="d-inline" th:action="@{'/partidos/{id}' (id=${p.id})}" th:method="DELETE">
                             <button type="submit" class="btn btn-danger" onclick="javascript: confirm('¿Está seguro de eliminar?')">
                                 <i class="fa-solid fa-trash-can" title="Eliminar"></i>
                             </button>
