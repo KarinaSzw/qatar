@@ -11,7 +11,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -55,11 +55,11 @@ public class Partido {
 
 
     @NotBlank(message = "Campo obligatorio si no tiene goles debe indicar 0")
-     public int golesLocal;
+     public String golesLocal;
  
 
     @NotBlank(message = "Campo obligatorio si no tiene goles debe indicar 0")
-    public int golesVisitante;
+    public String golesVisitante;
 
     @OneToOne
     public Estadio estadio;

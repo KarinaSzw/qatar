@@ -2,14 +2,14 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">
-                <div class="card-header h3" th:text="|Ver ID nº ${partido.Id}|"></div>
+               <div class="card-header h3" th:text="${partido.id}"></div>
                 <div class="card-body">
                     <p>
                         <span class="fw-bold">Fecha de Partido:</span>
                         <span th:text="${#dates.format(partido.fechaPartido, 'd MMMMM yyyy')}"></span>
                     </p>
                     <p>
-                        <span class="fw-bold">Seleccon local:</span>
+                        <span class="fw-bold">Seleccion local:</span>
                         <span th:text="${partido.seleccionLocal.nombre}"></span>
                     </p>
                     <p>
@@ -37,5 +37,4 @@
         </div>
     </div>
 </div>
-
 <script th:fragment="script"></script>

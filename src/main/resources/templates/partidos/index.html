@@ -32,7 +32,7 @@
                     <td th:text= "${#dates.format(p.fechaPartido, 'dd/MM/yyyy')}" ></td>
                    
                     <td th:text="${p.seleccionLocal.nombre}"></td>
-                    <td th:text="${p.seleccionVisitante.nombre"></td>
+                    <td th:text="${p.seleccionVisitante.nombre}"></td>
                  
                     <td>
                         <a class="btn btn-primary" th:href="@{'/partidos/{id}' (id=${p.id})}">
