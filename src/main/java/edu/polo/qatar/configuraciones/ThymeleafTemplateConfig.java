@@ -2,6 +2,7 @@ package edu.polo.qatar.configuraciones;
 
 import java.nio.charset.StandardCharsets;
 import org.springframework.context.annotation.*;
+import org.thymeleaf.extras.springsecurity5.dialect.SpringSecurityDialect;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
@@ -13,6 +14,10 @@ public class ThymeleafTemplateConfig {
     public SpringTemplateEngine springTemplateEngine() {
         SpringTemplateEngine springTemplateEngine = new SpringTemplateEngine();
         springTemplateEngine.addTemplateResolver(emailTemplateResolver());
+
+        springTemplateEngine.setEnableSpringELCompiler(true);
+        springTemplateEngine.addDialect(new SpringSecurityDialect());
+
         return springTemplateEngine;
     }
 
