@@ -22,6 +22,7 @@
             <thead>
                 <tr>
                     <th>Fecha del partido</th>
+                    <th>Hora del partido</th>
                     <th>Seleccion Local</th>
                     <th>Seleccion Visitante</th>
                     <th>Acciones</th>
@@ -30,10 +31,9 @@
             <tbody>
                 <tr th:each="p: ${partidos}">
                     <td th:text= "${#dates.format(p.fechaPartido, 'dd/MM/yyyy')}" ></td>
-                   
+                    <td th:text= "${#dates.format(p.horaPartido, 'HH:mm')}" ></td>
                     <td th:text="${p.seleccionLocal.nombre}"></td>
-                    <td th:text="${p.seleccionVisitante.nombre}"></td>
-                 
+                    <td th:text="${p.seleccionVisitante.nombre}"></td>                 
                     <td>
                         <a class="btn btn-primary" th:href="@{'/partidos/{id}' (id=${p.id})}">
                             <i class="fa-solid fa-eye" title="Ver"></i>

@@ -20,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import java.util.Date;
+
 import java.util.List;
 
 import lombok.AllArgsConstructor;
@@ -44,6 +45,10 @@ public class Partido {
     @NotNull(message = "Campo obligatorio")
      public Date  fechaPartido;
 
+     @DateTimeFormat(pattern = "HH:mm")
+     @Temporal(TemporalType.TIME)
+     @NotNull(message = "Campo obligatorio")
+      public Date  horaPartido;
     
      @ManyToOne
      @JsonManagedReference

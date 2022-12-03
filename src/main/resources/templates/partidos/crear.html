@@ -11,6 +11,11 @@
                         <input type="date" class="form-control" id="fechaPartido" th:field="*{fechaPartido}" th:errorClass="'is-invalid'">
                         <div class="invalid-feedback" th:if="${#fields.hasErrors('fechaPartido')}" th:errors="*{fechaPartido}"></div>
                     </div>
+                    <div class="mb-3">
+                        <label for="horaPartido" class="form-label">Hora  del partido</label>
+                        <input type="time" class="form-control" id="horaPartido" th:field="*{horaPartido}" th:errorClass="'is-invalid'">
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('horaPartido')}" th:errors="*{horaPartido}"></div>
+                    </div>
 
                     <div class="mb-3">
                         <label for="seleccionLocal" class="form-label">Selección local</label>

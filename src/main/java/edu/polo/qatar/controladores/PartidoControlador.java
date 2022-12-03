@@ -43,7 +43,7 @@ public class PartidoControlador implements WebMvcConfigurer {
         ModelAndView maw = new ModelAndView();
         maw.setViewName("fragments/base");
         maw.addObject("titulo", "Detalle del partido #" + id);
-        maw.addObject("vista", "partido/ver");
+        maw.addObject("vista", "partidos/ver");
         maw.addObject("partido", partidoServicio.getById(id));
         return maw;
     }
@@ -106,6 +106,7 @@ public class PartidoControlador implements WebMvcConfigurer {
 
         Partido registro = partidoServicio.getById(id);
         registro.setFechaPartido(partido.getFechaPartido());
+        registro.setHoraPartido(partido.getHoraPartido());
         registro.setSeleccionLocal(partido.getSeleccionLocal());
         registro.setSeleccionVisitante(partido.getSeleccionVisitante());
         registro.setGolesLocal(partido.getGolesLocal());

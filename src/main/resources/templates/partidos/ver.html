@@ -9,6 +9,10 @@
                         <span th:text="${#dates.format(partido.fechaPartido, 'd MMMMM yyyy')}"></span>
                     </p>
                     <p>
+                        <span class="fw-bold">Hora de Partido:</span>
+                        <span th:text="${#dates.format(partido.horaPartido, 'HH:mm')}"></span>
+                    </p>
+                    <p>
                         <span class="fw-bold">Seleccion local:</span>
                         <span th:text="${partido.seleccionLocal.nombre}"></span>
                     </p>
