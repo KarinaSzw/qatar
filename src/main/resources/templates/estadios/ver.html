@@ -10,7 +10,11 @@
                     </p>
                     <p>
                         <span class="fw-bold">Capacidad:</span>
-                        <span th:text="${estadios.capacidad} +' personas.'"></span>
+                        <span th:text="|${estadios.capacidad} personas|"></span>
+                    </p>
+                    <p>
+                        <span class="fw-bold">Descripción:</span>
+                        <span th:text="${estadios.descripcion}"></span>
                     </p>
                     <div class="mb-3" th:if="${estadios.foto != null}">
                         <img th:src="${'/images/estadios/' + estadios.foto}" th:alt="${'Foto del estadio ' + estadios.nombre}" height="200px">

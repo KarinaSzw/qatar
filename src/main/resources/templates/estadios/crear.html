@@ -22,6 +22,11 @@
                         <div class="invalid-feedback" th:if="${#fields.hasErrors('ciudad')}" th:errors="*{ciudad}"></div>
                     </div>
                     <div class="mb-3">
+                        <label for="descripcion" class="form-label">Descripción</label>
+                        <textarea class="form-control" id="descripcion" th:field="*{descripcion}" th:errorClass="'is-invalid'" rows="3"></textarea>
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"></div>
+                    </div>
+                    <div class="mb-3">
                         <label for="archivo" class="form-label">Foto del estadio</label>
                         <input class="form-control" type="file" id="archivo" name="archivo" accept="image/*" required>
                     </div>

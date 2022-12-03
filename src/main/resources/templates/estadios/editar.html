@@ -21,6 +21,11 @@
                         <input type="number" class="form-control" id="capacidad" th:field="*{capacidad}" th:errorClass="'is-invalid'">
                         <div class="invalid-feedback" th:if="${#fields.hasErrors('capacidad')}" th:errors="*{capacidad}"></div>
                     </div>
+                    <div class="mb-3">
+                        <label for="descripcion" class="form-label">Descripción</label>
+                        <textarea class="form-control" id="descripcion" th:field="*{descripcion}" th:errorClass="'is-invalid'" rows="3"></textarea>
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"></div>
+                    </div>
                     <div class="mb-3" th:if="${estadio.foto != null}">
                         <label>Foto actual del estadio</label>
                         <img th:src="${'/images/estadios/' + estadio.foto}" th:alt="${'Foto del estadio ' + estadio.nombre}" height="100px">

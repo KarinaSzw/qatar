@@ -22,13 +22,20 @@ public class Estadio {
     @Range(min = 1, max=100000, message = "Valor fuera de rango")
     private int capacidad;
 
+    @NotNull
     @NotBlank(message = "Campo obligatorio")
     @Size(max = 250, message= "Nombre demasiado largo")
     private String nombre;
 
+    @NotNull
     @NotBlank(message = "Campo obligatorio")
     @Size(max = 250, message= "Nombre demasiado largo")
     private String ciudad;
+
+    @NotNull
+    @NotBlank(message = "Campo obligatorio")
+    @Lob
+    private String descripcion;
 
     private String foto;
 
