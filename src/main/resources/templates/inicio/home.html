@@ -42,8 +42,12 @@
                 <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
             </div>
         </div>
-        <div class="card mb-3">
-            <img class="card-img" src="/images/estadios/alwakrah.jpg" alt="Card image">
+        <div class="card mb-3 d-inline-block">
+            <img class="card-img-top" th:src="|/images/estadios/${estadio.foto}|" th:alt="|Estadio ${estadio.nombre}|">
+            <div class="card-body">
+                <div class="card-title h5" th:text="|Estadio ${estadio.nombre}|"></div>
+                <p class="card-text" th:text="${estadio.descripcion}"></p>
+            </div>
         </div>
         <div class="card mb-3 p-3 text-right d-inline-block">
             <blockquote class="blockquote mb-0">
