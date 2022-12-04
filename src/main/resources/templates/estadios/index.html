@@ -24,6 +24,7 @@
                     <th>Nombre</th>
                     <th>Ciudad</th>
                     <th>Capacidad</th>
+                    <th style="text-align: center;">Imagen</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -32,6 +33,7 @@
                     <td th:text="${e.nombre}"></td>
                     <td th:text="${e.ciudad}"></td>
                     <td th:text="${e.capacidad}"></td>
+                    <td style="text-align: center;"><img th:src="${'/images/estadios/' + e.foto}" th:alt="${'Foto del estadio ' + e.nombre}" height="150px"></td>
                     <td>
                         <a class="btn btn-primary" th:href="@{'/estadios/{id}' (id=${e.id})}">
                             <i class="fa-solid fa-eye"></i>
