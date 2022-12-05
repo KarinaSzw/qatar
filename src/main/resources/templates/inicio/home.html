@@ -18,11 +18,23 @@
             </blockquote>
         </div>
         <div class="card mb-3 d-inline-block">
-            <img class="card-img-top" src="/images/selecciones/ARG.webp" alt="Selección de Argentina">
+            <img class="card-img-top" th:src="|/images/selecciones/${seleccion.foto}|" th:alt="|Selección de ${seleccion.pais.paisNombre}|">
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                <h5 class="card-title" th:text="|Selección de ${seleccion.pais.paisNombre}|"></h5>
+                <ul>
+                    <li>
+                        <span class="fw-bold">Apodo:</span>
+                        <span class="fst-italic" th:text="${seleccion.apodo}"></span>
+                    </li>
+                    <li>
+                        <span class="fw-bold">Participaciones previas:</span>
+                        <span th:text="${seleccion.participacionesPrevias}"></span>
+                    </li>
+                    <li>
+                        <span class="fw-bold">Mundiales ganados:</span>
+                        <span th:text="${seleccion.mundialesGanados}"></span>
+                    </li>
+                </ul>
             </div>
         </div>
         <div class="card mb-3 bg-primary text-white text-center p-3 d-inline-block">
