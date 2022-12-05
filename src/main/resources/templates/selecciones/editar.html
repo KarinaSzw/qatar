@@ -1,0 +1,61 @@
+<div class="container my-auto p-3" th:fragment="contenido">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    Editar selección
+                </div>
+                <form class="card-body" th:action="@{/selecciones/crear}" th:object="${seleccion}" method="POST" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="pais" class="form-label">País al que representa</label>
+                        <select id="pais" th:field="*{pais}" class="select2 form-select" th:errorClass="'is-invalid'">
+                            <option selected value=""></option>
+                            <option th:each="p : ${paises}" th:value="${p.paisId}" th:text="${p.paisNombre}"></option>
+                        </select>
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('pais')}" th:errors="*{pais}"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="apodo" class="form-label">Apodo</label>
+                        <input type="text" class="form-control" id="apodo" th:field="*{apodo}" th:errorClass="'is-invalid'">
+                        <div class="invalid-feedback" th:if="${#fields.hasErrors('apodo')}" th:errors="*{apodo}"></div>
+                    </div>
+                    <div class="mb-3 row">
+                        <div class="col-6">
+                            <label for="participacionesPrevias" class="form-label">Participaciones previas</label>
+                            <input type="number" min="0" max="21" step="1" class="form-control" id="participacionesPrevias" th:field="*{participacionesPrevias}" th:errorClass="'is-invalid'">
+                            <div class="invalid-feedback" th:if="${#fields.hasErrors('participacionesPrevias')}" th:errors="*{participacionesPrevias}"></div>
+                        </div>
+
+                        <div class="col-6">
+                            <label for="mundialesGanados" class="form-label">Mundiales ganados</label>
+                            <input type="number" min="0" max="10" step="1" class="form-control" id="mundialesGanados" th:field="*{mundialesGanados}" th:errorClass="'is-invalid'">
+                            <div class="invalid-feedback" th:if="${#fields.hasErrors('mundialesGanados')}" th:errors="*{mundialesGanados}"></div>
+                        </div>
+                    </div>
+                    <div class="mb-3" th:if="${seleccion.foto != null}">
+                        <label>Foto actual de la selección</label>
+                        <img th:src="${'/images/selecciones/' + seleccion.foto}" th:alt="${'Foto de laselección de ' + seleccion.pais.paisNombre}" height="100px">
+                    </div>
+                    <div class="mb-3">
+                        <label for="archivo" class="form-label">Foto de la selección</label>
+                        <input class="form-control" type="file" id="archivo" name="archivo" accept="image/*">
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" class="btn btn-primary mx-2">Guardar</button>
+                        <a href="/selecciones" class="btn btn-secondary mx-2">Volver</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script th:fragment="script">
+    $(document).ready(function() {
+        $('.select2').select2({
+            placeholder: 'Seleccione una opción',
+            allowClear: true,
+            width: '100%',
+        });
+    });
+</script>

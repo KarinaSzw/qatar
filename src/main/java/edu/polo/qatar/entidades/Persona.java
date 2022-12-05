@@ -15,9 +15,13 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import lombok.Data;
+import lombok.experimental.SuperBuilder;
 
 @Component
 @MappedSuperclass
+@Data
+@SuperBuilder
 public abstract class Persona {
     
     @NotBlank(message = "Campo obligatorio")
@@ -33,14 +37,18 @@ public abstract class Persona {
     @OneToOne
     @JsonBackReference
     @NotNull(message = "Debe elegir un valor")
-    protected Pais      lugarDeNacimiento;
+    protected Pais      paisDeNacimiento;
+
+    @NotNull(message = "Campo obligatorio")
+    protected String      ciudadDeNacimiento;
 
     protected Persona() {
     }
     
-    protected Persona(String nombre, Date fechaNacimiento, Pais lugarDeNacimiento) {
+    protected Persona(String nombre, Date fechaNacimiento, Pais paisDeNacimiento, String ciudadDeNacimiento) {
         this.nombre = nombre;
         this.fechaNacimiento = fechaNacimiento;
-        this.lugarDeNacimiento = lugarDeNacimiento;
+        this.paisDeNacimiento = paisDeNacimiento;
+        this.ciudadDeNacimiento = ciudadDeNacimiento;
     }
 }

@@ -26,38 +26,15 @@ public class Jugador extends Persona implements Serializable {
 
     private String foto;
 
-    public Jugador(String nombre, Date fechaNacimiento, Pais lugarDeNacimiento) {
-        super(nombre, fechaNacimiento, lugarDeNacimiento);
+    public Jugador(String nombre, Date fechaNacimiento, Pais lugarDeNacimiento, String ciudadDeNacimiento) {
+        super(nombre, fechaNacimiento, lugarDeNacimiento, ciudadDeNacimiento);
     }
 
-    public Jugador(Long id, Seleccion seleccion, String foto, String nombre, Date fechaNacimiento, Pais lugarDeNacimiento) {
-        super(nombre, fechaNacimiento, lugarDeNacimiento);
+    public Jugador(Long id, Seleccion seleccion, String foto, String nombre, Date fechaNacimiento, Pais lugarDeNacimiento, String ciudadDeNacimiento) {
+        super(nombre, fechaNacimiento, lugarDeNacimiento, ciudadDeNacimiento);
         this.id = id;
         this.seleccion = seleccion;
         this.foto = foto;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public Date getFechaNacimiento() {
-        return fechaNacimiento;
-    }
-
-    public void setFechaNacimiento(Date fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
-    }
-
-    public Pais getLugarDeNacimiento() {
-        return lugarDeNacimiento;
-    }
-
-    public void setLugarDeNacimiento(Pais lugarDeNacimiento) {
-        this.lugarDeNacimiento = lugarDeNacimiento;
-    }
 }

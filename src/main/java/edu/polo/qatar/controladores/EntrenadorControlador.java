@@ -15,10 +15,13 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 @RestController
-@RequestMapping("selecciones")
-public class SeleccionControlador implements WebMvcConfigurer {
+@RequestMapping("entrenadores")
+public class EntrenadorControlador implements WebMvcConfigurer {
 
 	@Autowired
+    EntrenadorServicio entrenadorServicio;
+
+    @Autowired
     SeleccionServicio seleccionServicio;
     
     @Autowired
@@ -29,9 +32,9 @@ public class SeleccionControlador implements WebMvcConfigurer {
     {
         ModelAndView maw = new ModelAndView();
         maw.setViewName("fragments/base");
-        maw.addObject("titulo", "Listado de selecciones");
-        maw.addObject("vista", "selecciones/index");
-        maw.addObject("selecciones", seleccionServicio.getAll());
+        maw.addObject("titulo", "Listado de entrenadores");
+        maw.addObject("vista", "entrenadores/index");
+        maw.addObject("entrenadores", entrenadorServicio.getAll());
         return maw;
     }
 
@@ -40,41 +43,40 @@ public class SeleccionControlador implements WebMvcConfigurer {
     {
         ModelAndView maw = new ModelAndView();
         maw.setViewName("fragments/base");
-        maw.addObject("titulo", "Detalle del seleccion #" + id);
-        maw.addObject("vista", "selecciones/ver");
-        maw.addObject("seleccion", seleccionServicio.getById(id));
+        maw.addObject("titulo", "Detalle del entrenador #" + id);
+        maw.addObject("vista", "entrenadores/ver");
+        maw.addObject("entrenador", entrenadorServicio.getById(id));
         return maw;
     }
 
 	@GetMapping("/crear")
-	public ModelAndView crear(Seleccion seleccion)
+	public ModelAndView crear(Entrenador entrenador)
     {
         ModelAndView maw = new ModelAndView();
         maw.setViewName("fragments/base");
-        maw.addObject("titulo", "Crear seleccion");
-        maw.addObject("vista", "selecciones/crear");
+        maw.addObject("titulo", "Crear entrenador");
+        maw.addObject("vista", "entrenadores/crear");
         maw.addObject("paises", paisServicio.getAll());
         maw.addObject("selecciones", seleccionServicio.getAll());
         return maw;
 	}
 
 	@PostMapping("/crear")
-	public ModelAndView guardar(@RequestParam("archivo") MultipartFile archivo, @Valid Seleccion seleccion, BindingResult br, RedirectAttributes ra)
+	public ModelAndView guardar(@RequestParam("archivo") MultipartFile archivo, @Valid Entrenador entrenador, BindingResult br, RedirectAttributes ra)
     {
-        System.out.println(archivo.isEmpty());
         if ( archivo.isEmpty() )
 			br.reject("archivo", "Por favor, cargue una imagen"); 
 
 		if ( br.hasErrors() ) {
-			return this.crear(seleccion);
+			return this.crear(entrenador);
 		}
 
-		seleccionServicio.save(seleccion);
+		entrenadorServicio.save(entrenador);
 
         String tipo = archivo.getContentType();
         String extension = "." + tipo.substring(tipo.indexOf('/') + 1, tipo.length());
-        String foto = seleccion.getId() + extension;
-        String path = Paths.get("src/main/resources/static/images/selecciones", foto).toAbsolutePath().toString();
+        String foto = entrenador.getId() + extension;
+        String path = Paths.get("src/main/resources/static/images/entrenadores", foto).toAbsolutePath().toString();
         ModelAndView maw = this.index();
 
         try {
@@ -84,30 +86,31 @@ public class SeleccionControlador implements WebMvcConfigurer {
             return maw;
         }
 
-        seleccion.setFoto(foto);
-        seleccionServicio.save(seleccion);
-        maw.addObject("exito", "Selección guardada exitosamente");
+        entrenador.setFoto(foto);
+        entrenadorServicio.save(entrenador);
+        maw.addObject("exito", "Entrenador guardado exitosamente");
 		return maw;
 	}
 
 	@GetMapping("/editar/{id}")
-    public ModelAndView editar(@PathVariable("id") Long id, Seleccion seleccion)
+    public ModelAndView editar(@PathVariable("id") Long id, Entrenador entrenador)
     {
-        return this.editar(id, seleccion, true);
+        return this.editar(id, entrenador, true);
     }
 
-    public ModelAndView editar(@PathVariable("id") Long id, Seleccion seleccion, boolean estaPersistido)
+    public ModelAndView editar(@PathVariable("id") Long id, Entrenador entrenador, boolean estaPersistido)
     {
         ModelAndView maw = new ModelAndView();
         maw.setViewName("fragments/base");
-        maw.addObject("titulo", "Editar seleccion");
-        maw.addObject("vista", "selecciones/editar");
+        maw.addObject("titulo", "Editar entrenador");
+        maw.addObject("vista", "entrenadores/editar");
         maw.addObject("paises", paisServicio.getAll());
+        maw.addObject("selecciones", seleccionServicio.getAll());
 
         if (estaPersistido)
-            maw.addObject("seleccion", seleccionServicio.getById(id));
+            maw.addObject("entrenador", entrenadorServicio.getById(id));
         else
-            seleccion.setFoto( seleccionServicio.getById(id).getFoto() );
+            entrenador.setFoto( entrenadorServicio.getById(id).getFoto() );
 
         return maw;
     }
@@ -115,24 +118,23 @@ public class SeleccionControlador implements WebMvcConfigurer {
     @PutMapping("/editar/{id}")
     private ModelAndView update(@PathVariable("id") Long id,
     @RequestParam(value = "archivo", required = false) MultipartFile archivo,
-    @Valid Seleccion seleccion, BindingResult br, RedirectAttributes ra)
+    @Valid Entrenador entrenador, BindingResult br, RedirectAttributes ra)
     {
         if ( br.hasErrors() ) {
-			return this.editar(id, seleccion, false);
+			return this.editar(id, entrenador, false);
 		}
 
-        Seleccion registro = seleccionServicio.getById(id);
-        registro.setPais( seleccion.getPais() );
-        registro.setApodo( seleccion.getApodo() );
-        registro.setMundialesGanados( seleccion.getMundialesGanados() );
-        registro.setParticipacionesPrevias( seleccion.getParticipacionesPrevias() );
+        Entrenador registro = entrenadorServicio.getById(id);
+        registro.setNombre( entrenador.getNombre() );
+        registro.setFechaNacimiento( entrenador.getFechaNacimiento() );
+        registro.setSeleccion( entrenador.getSeleccion() );
         ModelAndView maw = this.index();
 
         if ( ! archivo.isEmpty() ) {
             String tipo = archivo.getContentType();
             String extension = "." + tipo.substring(tipo.indexOf('/') + 1, tipo.length());
-            String foto = seleccion.getId() + extension;
-            String path = Paths.get("src/main/resources/static/images/selecciones", foto).toAbsolutePath().toString();
+            String foto = entrenador.getId() + extension;
+            String path = Paths.get("src/main/resources/static/images/entrenadores", foto).toAbsolutePath().toString();
 
             try {
                 archivo.transferTo( new File(path) );
@@ -144,17 +146,17 @@ public class SeleccionControlador implements WebMvcConfigurer {
             registro.setFoto(foto);
         }
 
-        seleccionServicio.save(registro);
-        maw.addObject("exito", "Selección editada exitosamente");
+        entrenadorServicio.save(registro);
+        maw.addObject("exito", "Entrenador editado exitosamente");
 		return maw;
     }
 
     @DeleteMapping("/{id}")
     private ModelAndView delete(@PathVariable("id") Long id)
     {
-        seleccionServicio.delete(id);
+        entrenadorServicio.delete(id);
         ModelAndView maw = this.index();
-        maw.addObject("exito", "Selección borrada exitosamente");
+        maw.addObject("exito", "Entrenador borrado exitosamente");
 		return maw;
     }
     
